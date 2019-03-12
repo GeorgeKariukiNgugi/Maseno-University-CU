@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+<title>Maseno university christian union Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body><div style="margin-bottom:115px;">
+        <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="background-color:#1aa0be;height:100px;">
+            <div class="container-fluid"><a class="navbar-brand" href="#" style="font-size:30px;font-family:&quot;Tmes  New Roman&quot;;"><i class="fa fa-stethoscope" style="font-size:50px;color:rgb(255,10,10);"></i>&nbsp; &nbsp;Hospiatal System.</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"><strong>Welcome ??Name ?? . Manage Patents eadily</strong></a></li>
+                    </ul><span class="navbar-text actions"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></span>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">Doctor Dashboard.</h2>
+            </div>
+            <div class="col"><div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" type="submit">
+        SUBMIT <span class="caret"></span>
+    </button>
+    <ul role="menu" class="dropdown-menu">
+    <div id="loginbox" style="margin-top:50px;float:right;" class="mainbox col-md-12 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+            </div>     
+            <div style="padding-top:30px" class="panel-body">
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                <form id="loginform" class="form-horizontal" role="form">    
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                    </div>
+                            
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+                                
+                    <div class="input-group">
+                        <div class="checkbox">
+                            <label>
+                                <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="margin-top:10px" class="form-group">
+                        <div class="col-sm-12 controls">
+                            <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                            <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                Don't have an account! 
+                                <a href="#" onclick="event.preventDefault(); $('#loginbox').hide(); $('#signupbox').show()">
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </form>     
+            </div>                     
+        </div>  
+    </div>
+    <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-12 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign Up</div>
+                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="event.preventDefault(); $('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+            </div>  
+            <div class="panel-body">
+                <form id="signupform" class="form-horizontal" role="form">
+                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
+                    </div>
+                          
+                    <div class="form-group">
+                        <label for="email" class="col-lg-3 control-label">Email</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="email" placeholder="Email Address">
+                        </div>
+                    </div>
+                            
+                    <div class="form-group">
+                        <label for="firstname" class="col-lg-3 control-label">First Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <label for="lastname" class="col-lg-3 control-label">Last Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="col-lg-3 control-label">Password</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" name="passwd" placeholder="Password">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
+                            <span style="margin-left:8px;">or</span>  
+                        </div>
+                    </div>
+                        
+                    <div style="border-top: 1px solid #999; padding-top:20px" class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>Sign Up with Facebook</button>
+                        </div>                                           
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+    </ul>
+</div>
+
+</div>
+        </div>
+        <ol class="breadcrumb" style="background-color:#f1655c;margin-top:10px;">
+            <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
+            <li class="breadcrumb-item"><a href="login.html"><span>LogIn&nbsp;</span></a></li>
+            <li class="breadcrumb-item"><a href="nivice.html"><span>Doctor Panel.</span></a></li>
+        </ol>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card" style="background-color:#b7e5eb;">
+                    <div class="card-header" style="background-color:rgba(181,24,109,0.59);">
+                        <h5 class="mb-0">Navigation&nbsp;</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html"><span><strong>Post Avaliability.</strong></span></a>
+                            <a class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Edit Details.</strong></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div>
+                    <div class="card">
+                        <div class="card-header" style="background-color:#b5186d;">
+                            <h5 class="mb-0">Major Operations ....</h5>
+                        </div>
+                        <div class="card-body" style="background-color:#b7e5eb;">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card" data-bs-hover-animate="jello" style="background:linear-gradient(90deg, #11998e 0%, #38ef7d 100%);" data-toggle="modal" data-target="#modal">
+                                        <div class="card-body" style="color:rgb(254,255,255);">
+                                            <p style="color:rgb(249,249,249);"><i class="fa fa-search" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp;search for&nbsp;</p>
+                                            <p style="color:rgb(255,252,252);"><strong>Patients</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card" style="background:linear-gradient(90deg , #45b649 0%, #dce35b 100%);color:rgb(255,255,255);">
+                                        <div class="card-body" style="color:rgb(255,255,255);">
+                                            <p style="color:rgb(255,255,255);"><i class="fa fa-book" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; view&nbsp;</p>
+                                            <p style="color:rgb(255,255,255);"><strong>Appointments.</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col"><a href="comments.html">
+                                    <div class="card" style="background:linear-gradient(90deg,#3f5efb 0%, #fc466b 100%);">
+                                        <div class="card-body">
+                                            <p style="color:rgb(255,255,255);"><i class="fa fa-comments" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Message</p>
+                                            <p style="color:rgb(255,255,255);"><strong>Board.</strong></p>
+                                        </div>
+                                    </div></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header" style="background-color:rgba(181,24,109,0.59);">
+                <h5 class="mb-0">Appointments made&nbsp;</h5>
+            </div>
+            <div class="card-body" style="background-color:#b7e5eb;">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-dark table-sm">
+                        <caption>This table is all &nbsp;about the doctors appointments.</caption>
+                        <thead>
+                            <tr>
+                                <th class="th" style="color:rgb(255,255,255);">Doctor Name</th>
+                                <th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;color:rgb(255,255,255);">Patient Name</th>
+                                <th class="th" style="color:rgb(255,253,253);">Time&nbsp;</th>
+                                <th class="th" style="color:rgb(254,254,254);">Patient Id&nbsp;</th>
+                                <th style="color:rgb(255,246,246);">Appointmant Date</th>
+                                <th style="color:rgb(255,246,246);">Appointmant Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>George Kariuki</td>
+                                <td style="padding-top:0px;padding-right:0px;padding-bottom:0px;">Prestige Loamni</td>
+                                <td>12:00 pm</td>
+                                <td>PT/00145/016</td>
+                                <td>12-01-2014</td>
+                                <td><a class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="view patient." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+                                    <a class="btn btn-secondary" role="button" href="index,html" style="background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="delete appointment" data-toggle="tooltip"><i class="fa fa-trash-o" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#e8449d;color:#ffffff;border-radius:50%;" title="search ." data-toggle="tooltip"><i class="fa fa-search" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>George Kariuki<br></td>
+                                <td>Prestige Loamni<br></td>
+                                <td>12:00 pm<br></td>
+                                <td>PT/00145/016<br></td>
+                                <td>12-01-2014<br></td>
+                                <td><button class="btn btn-success" type="button" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="View History." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></button>
+                                    <a class="btn btn-success" role="button" href="index,html" style="background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="delete appointment" data-toggle="tooltip"><i class="fa fa-trash" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#e8449d;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:0px;" title="search ." data-toggle="tooltip"><i class="fa fa-search" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td>George Kariuki<br></td>
+                                <td>Prestige Loamni<br></td>
+                                <td>12:00 pm<br></td>
+                                <td>PT/00145/016<br></td>
+                                <td>12-01-2014<br></td>
+                                <td><button class="btn btn-success" type="button" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="View History." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></button>
+                                    <a class="btn btn-success" role="button" href="index,html" style="background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="delete appointment" data-toggle="tooltip"><i class="fa fa-trash" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#e8449d;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:0px;" title="search ." data-toggle="tooltip"><i class="fa fa-search" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td><em>FIRST NAME .</em><br></td>
+                                <td><em>SECOND NAME.</em><br></td>
+                                <td><em>TIME</em>&nbsp;<br></td>
+                                <td><em>PATIENT ID&nbsp;</em><br></td>
+                                <td>Appoinment date</td>
+                                <td><em>ACTIONS .</em><br></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Patient Search .</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p>Please Insert The Patient Id Then Search.</p>
+                    <form action="medicalHistory.php" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i>&nbsp;ID</span></div><input class="form-control" type="text" name="patient_id">
+                                <div class="input-group-append"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6 offset-sm-3"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(52,114,247);color:rgb(252,252,252);"><strong>Search</strong></button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"><button class="btn btn-success" type="button" data-dismiss="modal" style="background-color:#1aa0be;color:rgb(255,255,255);">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="ceomodal">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#eec9c9;">
+                    <h4 class="text-center modal-title">Message CEO .</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body" style="background-color:#bae6d1;">
+                    <p>Enter The Message you want to send.</p>
+                    <form>
+                        <div class="form-row" style="margin-top:30px;">
+                            <div class="col" style="height:80px;"><textarea class="form-control" placeholder="Message is Here." style="height:80px;background-color:#eefcf6;color:rgb(0,0,0);"></textarea></div>
+                        </div>
+                        <div class="form-row" style="margin-top:30px;">
+                            <div class="col-md-2 offset-5"><button class="btn btn-primary" type="button" style="background-color:rgb(52,114,247);color:rgb(255,255,255);">Send.</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="background-color:#bae6d1;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="background-color:rgb(255,74,85);color:rgb(255,255,255);">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" style="background-color:#1aa0be;">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 footer-navigation">
+                <h3><a href="#">Hospital Management .</a></h3>
+                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Feedback.</a><strong> · </strong><a href="#">Locations</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
+                <p class="company-name" style="color:rgb(255,255,255);">Hospital Management System. © 2019</p>
+            </div>
+            <div class="col-sm-6 col-md-4 footer-contacts">
+                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                    <p><span class="new-line-span">Consolidated Biulding 23 Floor</span> Upper Hill , Nairobi , Kenya.</p>
+                </div>
+                <div><i class="fa fa-phone footer-contacts-icon"></i>
+                    <p class="footer-center-info email text-left"> +254792107437</p>
+                </div>
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a href="#" target="_blank" style="color:rgb(3,97,252);">management@management.t</a></p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4 footer-about ourDedics">
+                <h4>Site Created and Maintained By :&nbsp;</h4>
+                <h5><strong>JohKariMo Developers</strong></h5>
+                <p style="color:rgb(255,255,255);"> A software comapny dedicated to meet All Your Software needs. Contact us or visit us for more to do with development of Web Applications , Android Apps , &nbsp;Home Automatio etc .</p>
+                <div class="social-links social-icons"><a href="facebook.com"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+    <script src="assets/js/Basic-fancyBox-Gallery2.js"></script>
+    <script src="assets/js/Analog_Clock.js"></script>
+    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap1.js"></script>
+    <script src="assets/js/jquery.validate.js"></script>
+    <script src="assets/js/Dashboard-layout-v11.js"></script>
+    <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap.js"></script>
+    <script src="assets/js/new.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap3.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap2.js"></script>
+    <script src="assets/js/Sortable-filter-gallery-portfolio.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/passwordValidation.js"></script>
+    <script src="assets/js/Sidebar-Menu.js"></script>
+    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
