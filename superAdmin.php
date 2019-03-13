@@ -1,3 +1,40 @@
+<?php
+   include('includes/databaseConnectivity.php');;
+   if(isset($_POST['submit'])){
+	   $fname = $_POST['fname'];
+	   $lname = $_POST['lname'];
+	   $title =  $_POST['title'];
+	   $password =  $_POST['password'];
+	   $year =  $_POST['year'];
+	   
+	  // inserting the data into the database.
+	  
+	  $sql = " insert into admindetails (fName,lName,title,servingYear,dateRegistred) values ('" .$fname. "','" .$lname."','".$title."','" .$year."',curdate());";
+	  
+	  $result = $conn->query($sql);
+	  
+	  if($result){
+		   echo "<div role=\"dialog\" tabindex=\"-1\" class=\"modal fade show\" style=\"display: block;\">
+    <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-content\">
+            <div class=\"modal-body\">
+                <h3 style=\"color:rgb(247,5,49);\">Congratulations !!!!</h3>
+                <p><strong>User has successfully been added</strong></p>
+            </div>
+            <div class=\"modal-footer\"><a class=\"btn btn-info\" role=\"button\" href=\"superadmin.php\">Ok.</a></div>
+        </div>
+    </div>
+</div>";
+		 
+	  }
+	  else{
+		  echo "Error was experienced" . $conn-> error ;
+	  }
+   }
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +50,6 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-<title>Maseno university christian union Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -59,16 +95,16 @@
             <li class="breadcrumb-item"><a href="#"><span>Admin Dashboard</span></a></li>
         </ol>
         <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-header" style="background:linear-gradient(90deg ,rgba(171,226,101,0.03),rgba(171,226,101,0.03));background-color:#7ef048;">
-                        <h5 class="mb-0">Navigation</h5>
-                    </div>
-                    <div class="card-body" style="color:rgb(0,0,0);">
-                        <div class="list-group"><button class="list-group-item list-group-item-action"><span><strong>New Message .</strong></span></button><button class="list-group-item list-group-item-action"><span><strong>Home Message</strong></span></button><button class="list-group-item list-group-item-action"><span><strong>News Table</strong></span></button></div>
-                    </div>
-                </div>
-            </div>
+<div class="col-md-3">
+    <div class="card">
+        <div class="card-header" style="background:linear-gradient(90deg ,rgba(171,226,101,0.03),rgba(171,226,101,0.03));background-color:#7ef048;">
+            <h5 class="mb-0">Navigation</h5>
+        </div>
+        <div class="card-body" style="color:rgb(0,0,0);">
+            <div class="list-group"><button class="list-group-item list-group-item-action" id = "newMessage" data-target = "#addnews" data-toggle = "modal"><span><strong>New Event.</strong></span></button><button class="list-group-item list-group-item-action" id = "homeMessage"><span><strong>Home Message</strong></span></button><button class="list-group-item list-group-item-action " href = "newsboard.php"><span><strong>News Table</strong></span></button></div>
+        </div>
+    </div>
+</div>
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header" style="background-color:#7ef048;">
@@ -106,7 +142,7 @@
         <h1 style="margin-top:20px;margin-bottom:10px;font-family:&quot;Times New Roman&quot;;">News.</h1>
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover table-dark">
-                <caption>Table Caption</caption>
+                <caption>News table.</caption>
                 <thead>
                     <tr>
                         <th>Sno</th>
@@ -117,28 +153,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 1</td>
-                        <td>Cell 1</td>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td>Cell 3</td>
-                        <td>Cell 3</td>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                    </tr>
-                </tbody>
+							<?php
+							
+							     // the sql query to get the news.
+								 
+								 $sql = "select news.datePosted as dates,news.subject, concat(admin.fName, ' ', admin.Lname) as name, admin.title from newsboard as news inner join admindetails as admin on news.adminid = admin.adminId ;";
+								 							 
+								 if($result = $conn->query($sql)){
+									 $sno = 0;
+									 $number = $result-> num_rows;
+									 if($number>0){
+										 	 while($rows = $result-> fetch_object()){
+										 $date = $rows->dates;
+										 $subject = $rows->subject;
+										 $name = $rows->name;
+										 $title = $rows->title;	
+                                         $sno++;										 
+										 echo "<tr>
+										             <td>$sno</td>
+													 <td>$name</td>
+													 <td>$title</td>
+													 <td>$subject</td>
+													 <td>$date</td>
+										       </tr>";
+									 }
+									
+									 }
+								else{
+										 echo "<tr><td style = \"text-align:center;\"><b>No event/news.</b><td></tr>";
+									 }									 
+								 }
+								 else{
+									 echo $conn->error . "Is the problem when doing the etting of the record.";
+								 }
+							
+							?>
                 <tfoot>
                     <tr>
-                        <td>Summary 1</td>
-                        <td>Summary 1</td>
-                        <td>Summary 1</td>
-                        <td>Summary 1</td>
-                        <td>Summary 2</td>
+                        <td>Sno</td>
+                        <td>Name</td>
+                        <td>Title</td>
+                        <td>Subject</td>
+                        <td>Date</td>
                     </tr>
                 </tfoot>
             </table>
@@ -214,7 +270,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col"><button class="btn btn-success" type="submit">ADD .</button><button class="btn btn-info" type="button" data-dismiss="modal">Close</button></div>
+                            <div class="col"><button class="btn btn-success" type="submit" name = "submit">ADD .</button><button class="btn btn-info" type="button" data-dismiss="modal">Close</button></div>
                         </div>
                     </form>
                 </div>
@@ -222,36 +278,27 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <h3 style="color:rgb(247,5,49);">Congratulations !!!!</h3>
-                    <p><strong>User has successfu.lly been added</strong></p>
-                </div>
-                <div class="modal-footer"><a class="btn btn-primary" role="button" href="superminadmin.php">Save</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="addnews">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color:#f9d44f;">
-                    <h4 class="modal-title">Add Event ...&nbsp;</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body" style="background-color:#f9d44f;">
-                    <form action="suphpperadmin." method="post">
-                        <div class="form-group"><label><strong>Subject:&nbsp;</strong></label>
-                            <div class="input-group">
-                                <div class="input-group-prepend"></div><input class="form-control" type="text" name="subject" placeholder="subject" style="background-color:#f7eaba;">
-                                <div class="input-group-append"></div>
-                            </div>
+	
+	<div role="dialog" tabindex="-1" class="modal fade" id="addnews">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#f9d44f;">
+                <h4 class="modal-title">Add Event ...</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body" style="background-color:#f9d44f;">
+                <form action="suphpperadmin." method="post">
+                    <div class="form-group"><label><strong>Subject:</strong></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend"></div><input type="text" name="subject" placeholder="subject" class="form-control" style="background-color:#f7eaba;" />
+                            <div class="input-group-append"></div>
                         </div>
-                        <div class="form-group"><label><strong>Message :</strong></label><textarea class="form-control" rows="7" name="message" placeholder="message" style="background-color:#f7eaba;"></textarea></div><button class="btn btn-success btn-block" type="submit" id="submitevent"><strong>ADD EVENT.</strong></button></form>
-                </div>
-                <div class="modal-footer" style="background-color:#f9d44f;"><button class="btn btn-danger" type="button" data-dismiss="modal">Close</button></div>
+                    </div>
+                    <div class="form-group"><label><strong>Message :</strong></label><textarea rows="7" name="message" placeholder="message" class="form-control" style="background-color:#f7eaba;"></textarea></div><button class="btn btn-success btn-block" type="submit" id="submitevent"><strong>ADD EVENT.</strong></button></form>
             </div>
+            <div class="modal-footer" style="background-color:#f9d44f;"><button class="btn btn-danger" type="button" data-dismiss="modal">Close</button></div>
         </div>
     </div>
+</div>
+	
     <footer><footer class="site-footer">
       <div class="container">
         <div class="row mb-5">
