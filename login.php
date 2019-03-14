@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 		echo $number;
 		
 		if($number == 1){
-			header('Location:superAdmin.html');
+			header('Location:superAdmin.php');
 		}
 		else{
 			// SETTIN THE ARRAY IF AN ERROR IS EXPERIENCED.

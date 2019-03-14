@@ -1,5 +1,5 @@
 <?php
-   include('includes/databaseConnectivity.php');;
+   include('includes/databaseConnectivity.php');
    if(isset($_POST['submit'])){
 	   $fname = $_POST['fname'];
 	   $lname = $_POST['lname'];
@@ -31,6 +31,38 @@
 		  echo "Error was experienced" . $conn-> error ;
 	  }
    }
+    
+   
+   //checking if the add news submit button has been clicked.
+    if(isset($_POST['submitevent'])){
+	   echo "entered.";
+	   $subject = $_POST['subject'];
+	   $message = $_POST['message'];
+	   
+	   //$sql2 = "insert into newsboard (adminid,dateposted,subject,message) values (". 1 . " 2014-04-04 ,' " .$subject."','". $message ."');";
+	   $sql2 = " insert into newsboard (adminid,datePosted,subject,message) values ( 1 ,'".date("Y-m-d")."','$subject','$message');";
+	   
+	   if($conn -> query($sql2)){
+		   		   echo "<div role=\"dialog\" tabindex=\"-1\" class=\"modal fade show\" style=\"display: block;\">
+    <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-content\">
+            <div class=\"modal-body\">
+                <h3 style=\"color:rgb(247,5,49);\">Congratulations !!!!</h3>
+                <p><strong>You have successfully added an event.</strong></p>
+            </div>
+            <div class=\"modal-footer\"><a class=\"btn btn-info\" role=\"button\" href=\"superadmin.php\">Ok.</a></div>
+        </div>
+    </div>
+</div>";
+	   }
+	   else{
+		   echo $conn -> error . "This is the error in insertion.";
+	   }
+	   
+	   
+	   
+   }
+   
 
 ?>
 
@@ -285,14 +317,14 @@
             <div class="modal-header" style="background-color:#f9d44f;">
                 <h4 class="modal-title">Add Event ...</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
             <div class="modal-body" style="background-color:#f9d44f;">
-                <form action="suphpperadmin." method="post">
+                <form action="superAdmin.php" method="post">
                     <div class="form-group"><label><strong>Subject:</strong></label>
                         <div class="input-group">
                             <div class="input-group-prepend"></div><input type="text" name="subject" placeholder="subject" class="form-control" style="background-color:#f7eaba;" />
                             <div class="input-group-append"></div>
                         </div>
                     </div>
-                    <div class="form-group"><label><strong>Message :</strong></label><textarea rows="7" name="message" placeholder="message" class="form-control" style="background-color:#f7eaba;"></textarea></div><button class="btn btn-success btn-block" type="submit" id="submitevent"><strong>ADD EVENT.</strong></button></form>
+                    <div class="form-group"><label><strong>Message :</strong></label><textarea rows="7" name="message" placeholder="message" class="form-control" style="background-color:#f7eaba;"></textarea></div><button class="btn btn-success btn-block" type="submit" name="submitevent"><strong>ADD EVENT.</strong></button></form>
             </div>
             <div class="modal-footer" style="background-color:#f9d44f;"><button class="btn btn-danger" type="button" data-dismiss="modal">Close</button></div>
         </div>
