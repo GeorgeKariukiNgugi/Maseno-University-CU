@@ -1,72 +1,3 @@
-<?php
-   include('includes/databaseConnectivity.php');
-   if(isset($_POST['submit'])){
-	   $fname = $_POST['fname'];
-	   $lname = $_POST['lname'];
-	   $title =  $_POST['title'];
-	   $password =  $_POST['password'];
-	   $year =  $_POST['year'];
-	   
-	  // inserting the data into the database.
-	  
-	  $sql = " insert into admindetails (fName,lName,title,servingYear,dateRegistred) values ('" .$fname. "','" .$lname."','".$title."','" .$year."',curdate());";
-	  
-	  $result = $conn->query($sql);
-	  
-	  if($result){
-		   echo "<div role=\"dialog\" tabindex=\"-1\" class=\"modal fade show\" style=\"display: block;\">
-    <div class=\"modal-dialog\" role=\"document\">
-        <div class=\"modal-content\">
-            <div class=\"modal-body\">
-                <h3 style=\"color:rgb(247,5,49);\">Congratulations !!!!</h3>
-                <p><strong>User has successfully been added</strong></p>
-            </div>
-            <div class=\"modal-footer\"><a class=\"btn btn-info\" role=\"button\" href=\"superadmin.php\">Ok.</a></div>
-        </div>
-    </div>
-</div>";
-		 
-	  }
-	  else{
-		  echo "Error was experienced" . $conn-> error ;
-	  }
-   }
-    
-   
-   //checking if the add news submit button has been clicked.
-    if(isset($_POST['submitevent'])){
-	   echo "entered.";
-	   $subject = $_POST['subject'];
-	   $message = $_POST['message'];
-	   
-	   //$sql2 = "insert into newsboard (adminid,dateposted,subject,message) values (". 1 . " 2014-04-04 ,' " .$subject."','". $message ."');";
-	   $sql2 = " insert into newsboard (adminid,datePosted,subject,message) values ( 1 ,'".date("Y-m-d")."','$subject','$message');";
-	   
-	   if($conn -> query($sql2)){
-		   		   echo "<div role=\"dialog\" tabindex=\"-1\" class=\"modal fade show\" style=\"display: block;\">
-    <div class=\"modal-dialog\" role=\"document\">
-        <div class=\"modal-content\">
-            <div class=\"modal-body\">
-                <h3 style=\"color:rgb(247,5,49);\">Congratulations !!!!</h3>
-                <p><strong>You have successfully added an event.</strong></p>
-            </div>
-            <div class=\"modal-footer\"><a class=\"btn btn-info\" role=\"button\" href=\"superadmin.php\">Ok.</a></div>
-        </div>
-    </div>
-</div>";
-	   }
-	   else{
-		   echo $conn -> error . "This is the error in insertion.";
-	   }
-	   
-	   
-	   
-   }
-   
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -100,6 +31,96 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+<?php
+   include('includes/databaseClass.php');
+   include('includes/insertngNews.php');
+   include('includes/fetchingnews.php');
+  /*  function spl_autoload_register()($class){
+	   include('includes/'.$class.'.php');
+   } */
+   if(isset($_POST['submit'])){
+	   $fname = $_POST['fname'];
+	   $lname = $_POST['lname'];
+	   $title =  $_POST['title'];
+	   $password =  $_POST['password'];
+	   $year =  $_POST['year'];
+	   $sql2 = null;
+	  // inserting the data into the database.
+	   DEFINE('HOST','Localhost:3308');
+   DEFINE('USER','root');
+   DEFINE('PASSWORD','7205');
+   DEFINE('DATABASE','masenocu');
+   $conn = null;
+   // DATABASE CONNECTIVITY.
+   $conn = new MySQLi(HOST,USER,PASSWORD,DATABASE);
+   
+   if($conn -> connect_error){	   
+	   die($conn -> connect_error);	   
+   }
+	  $sql2 = " insert into admindetails (fName,lName,title,servingYear,dateRegistred) values ('" .$fname. "','" .$lname."','".$title."','" .$year."',curdate());";
+	  
+	  $result = ($conn->query($sql2));
+	  
+	  if($result){
+		   echo "<div role=\"dialog\" tabindex=\"-1\" class=\"modal fade show\" style=\"display: block;\">
+    <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-content\">
+            <div class=\"modal-body\">
+                <h3 style=\"color:rgb(247,5,49);\">Congratulations !!!!</h3>
+                <p><strong>User has successfully been added</strong></p>
+            </div>
+            <div class=\"modal-footer\"><a class=\"btn btn-info\" role=\"button\" href=\"superAdmin.php\">Ok.</a></div>
+        </div>
+    </div>
+</div>";
+		 
+	  }
+	  else{
+		  echo "Error was experienced" . $conn-> error ;
+	  }
+   }
+    
+   
+   //checking if the add news submit button has been clicked.
+    if(isset($_POST['submitevent'])){
+	   //echo "entered.";
+	   $subject = $_POST['subject'];
+	   $message = $_POST['message'];
+	   
+	   $insertingNewsObject = new AddNewNews();
+	   
+	   $insertingNewsObject->addnews($subject,$message,"superAdmin.php");
+	   
+	   //$sql2 = "insert into newsboard (adminid,dateposted,subject,message) values (". 1 . " 2014-04-04 ,' " .$subject."','". $message ."');";
+	  /* $sql2 = " insert into newsboard (adminid,datePosted,subject,message) values ( 1 ,'".date("Y-m-d")."','$subject','$message');";
+	   
+	   if($conn -> query($sql2)){
+		   		   echo "<div role=\"dialog\" tabindex=\"-1\" class=\"modal fade show\" style=\"display: block;\">
+    <div class=\"modal-dialog\" role=\"document\">
+        <div class=\"modal-content\">
+            <div class=\"modal-body\">
+                <h3 style=\"color:rgb(247,5,49);\">Congratulations !!!!</h3>
+                <p><strong>You have successfully added an event.</strong></p>
+            </div>
+            <div class=\"modal-footer\"><a class=\"btn btn-info\" role=\"button\" href=\"superAdmin.php\">Ok.</a></div>
+        </div>
+    </div>
+</div>";
+	   }
+	   else{
+		   echo $conn -> error . "This is the error in insertion.";
+	   } */
+	   
+	   
+	   
+   }
+   
+
+?>
+
+
+
+
 <body style="background-color:rgb(249,242,250);">
     <div style="margin-bottom:110px;">
         <nav class="navbar navbar-light navbar-expand-md fixed-top navigation-clean-button" style="background-color:#6c5b7b;height:100px;">
@@ -122,8 +143,8 @@
             </div>
         </div>
         <ol class="breadcrumb" style="background-color:rgb(86,198,198);margin-top:16px;">
-            <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
-            <li class="breadcrumb-item"><a href="login.html"><span>Login</span></a></li>
+            <li class="breadcrumb-item"><a href="index.php"><span>Home</span></a></li>
+            <li class="breadcrumb-item"><a href="login.php"><span>Login</span></a></li>
             <li class="breadcrumb-item"><a href="#"><span>Admin Dashboard</span></a></li>
         </ol>
         <div class="row">
@@ -133,7 +154,7 @@
             <h5 class="mb-0">Navigation</h5>
         </div>
         <div class="card-body" style="color:rgb(0,0,0);">
-            <div class="list-group"><button class="list-group-item list-group-item-action" id = "newMessage" data-target = "#addnews" data-toggle = "modal"><span><strong>New Event.</strong></span></button><button class="list-group-item list-group-item-action" id = "homeMessage"><span><strong>Home Message</strong></span></button><button class="list-group-item list-group-item-action " href = "newsboard.php"><span><strong>News Table</strong></span></button></div>
+            <div class="list-group"><button class="list-group-item list-group-item-action" id = "newMessage" data-target = "#addnews" data-toggle = "modal"><span><strong>New Event.</strong></span></button><button class="list-group-item list-group-item-action" id = "homeMessage"><span><strong>Home Message</strong></span></button><button class="list-group-item list-group-item-action" id = "newstable"><span><strong>News Table</strong></span></button></div>
         </div>
     </div>
 </div>
@@ -159,7 +180,7 @@
                                         <p><strong>Comments</strong></p>
                                     </div>
                                 </div></a></div>
-                            <div class="col"><a href = "manageevents.html">
+                            <div class="col"><a href = "newsDashboard.php">
                                 <div class="card" style="background:linear-gradient(90deg, #11998e 0%, #38ef7d 100%);">
                                     <div class="card-body" style="color:rgb(255,255,255);">
                                         <p><i class="fa fa-newspaper-o" style="font-size:55px;"></i>&nbsp; &nbsp; <strong>Manage&nbsp;</strong></p>
@@ -185,41 +206,15 @@
                     </tr>
                 </thead>
                 <tbody>
+				  <tr>
 							<?php
 							
-							     // the sql query to get the news.
-								 
-								 $sql = "select news.datePosted as dates,news.subject, concat(admin.fName, ' ', admin.Lname) as name, admin.title from newsboard as news inner join admindetails as admin on news.adminid = admin.adminId ;";
-								 							 
-								 if($result = $conn->query($sql)){
-									 $sno = 0;
-									 $number = $result-> num_rows;
-									 if($number>0){
-										 	 while($rows = $result-> fetch_object()){
-										 $date = $rows->dates;
-										 $subject = $rows->subject;
-										 $name = $rows->name;
-										 $title = $rows->title;	
-                                         $sno++;										 
-										 echo "<tr>
-										             <td>$sno</td>
-													 <td>$name</td>
-													 <td>$title</td>
-													 <td>$subject</td>
-													 <td>$date</td>
-										       </tr>";
-									 }
-									
-									 }
-								else{
-										 echo "<tr><td style = \"text-align:center;\"><b>No event/news.</b><td></tr>";
-									 }									 
-								 }
-								 else{
-									 echo $conn->error . "Is the problem when doing the etting of the record.";
-								 }
 							
+							    $fechObject = new FetchNews();
+								
+								$fechObject->fetchNewsfuction(1);
 							?>
+					</tr>
                 <tfoot>
                     <tr>
                         <td>Sno</td>
@@ -330,105 +325,12 @@
         </div>
     </div>
 </div>
-	
-    <footer><footer class="site-footer">
-      <div class="container">
-        <div class="row mb-5">
-        <!--   <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-            <p>Perferendis eum illum voluptatibus dolore tempora consequatur minus asperiores temporibus.</p>
-          </div> -->
-          <div class="col-md-6 col-lg-6 mb-5 mb-lg-0">
-            <h3 class="heading">Church Quick Links</h3>
-            <div class="row">
-              <div class="col-md-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Board Ministry</a></li>
-                  <li><a href="#">Media and IT Ministry</a></li>
-				  <li><a href="#">High school Ministry</a></li>
-                  <li><a href="#">Hospitality Ministry</a></li>
-                  <li><a href="#">Intercessory Ministry</a></li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">Senior Adult Ministry</a></li>
-                  <li><a href="#">Marriage Ministries</a></li>
-                  <li><a href="#">Missions & Outreach</a></li>
-                  <li><a href="#">Prayer Ministry</a></li>
-                </ul>
-              </div>
-              <div class="col-md-4">
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Location</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Privacy &amp; Policy</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-            <h3 class="heading">Events</h3>
-            <div class="block-21 d-flex mb-4">
-              <div class="text">
-                <h3 class="heading mb-0"><a href="#">Consectetur Adipisicing Elit</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="ion-android-calendar"></span> May 29, 2018</a></div>
-                  <div><a href="#"><span class="ion-android-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="ion-chatbubble"></span> 19</a></div>
-                </div>
-              </div>
-            </div>  
-            <div class="block-21 d-flex mb-4">
-              <div class="text">
-                <h3 class="heading mb-0"><a href="#">Dolore Tempora Consequatur</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="ion-android-calendar"></span> May 29, 2018</a></div>
-                  <div><a href="#"><span class="ion-android-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="ion-chatbubble"></span> 19</a></div>
-                </div>
-              </div>
-            </div>  
-            <div class="block-21 d-flex mb-4">
-              <div class="text">
-                <h3 class="heading mb-0"><a href="#">Perferendis eum illum</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="ion-android-calendar"></span> May 29, 2018</a></div>
-                  <div><a href="#"><span class="ion-android-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="ion-chatbubble"></span> 19</a></div>
-                </div>
-              </div>
-            </div>  
-          </div>
-          <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
-            <h3 class="heading">Contact Information</h3>
-            <div class="block-23">
-              <ul>
-                <li><span class="icon ion-android-pin"></span><span class="text">P.O BOX 416 ,MASENO, KENYA</span></li>
-                <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+2 392 3929 210</span></a></li>
-                <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">masenocu015@gmail.com</span></a></li>
-				<li><a href="login.html"><span class="icon ion-android-lock"></span><span class="text">LogIn</span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-5">
-          <div class="col-md-12 text-center copyright">
-            
-            <p class="float-md-left"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            <p class="float-md-right">
-              <a href="#" class="fa fa-facebook p-2"></a>
-              <a href="#" class="fa fa-twitter p-2"></a>
-              <a href="#" class="fa fa-linkedin p-2"></a>
-              <a href="#" class="fa fa-instagram p-2"></a>
 
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer></footer>
+   <?php
+		
+		   include("includes/footer.php");
+		?>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/modalHide.js"></script>

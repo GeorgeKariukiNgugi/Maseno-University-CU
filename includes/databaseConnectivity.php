@@ -3,7 +3,7 @@
    DEFINE('USER','root');
    DEFINE('PASSWORD','7205');
    DEFINE('DATABASE','masenocu');
-   
+   $conn = null;
    // DATABASE CONNECTIVITY.
    $conn = new MySQLi(HOST,USER,PASSWORD,DATABASE);
    
